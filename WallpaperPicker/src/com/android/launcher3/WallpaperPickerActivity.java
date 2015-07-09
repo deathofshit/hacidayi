@@ -79,6 +79,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.android.launcher3.wallpaperpicker.R;
+
 public class WallpaperPickerActivity extends WallpaperCropActivity {
     static final String TAG = "Launcher.WallpaperPickerActivity";
 
@@ -972,6 +974,7 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
         final PackageManager pm = getPackageManager();
         final ArrayList<WallpaperTileInfo> bundled = new ArrayList<WallpaperTileInfo>(24);
 
+        /* Remove Cyanogenmod specific partner check
         Partner partner = Partner.get(pm);
         if (partner != null) {
             final Resources partnerRes = partner.getResources();
@@ -1009,6 +1012,7 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
                 }
             }
         }
+        */
 
         Pair<ApplicationInfo, Integer> r = getWallpaperArrayResourceId();
         if (r != null) {
@@ -1019,6 +1023,7 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
             }
         }
 
+        /* Remove Cyanogenmod specific partner check
         if (partner == null || !partner.hideDefaultWallpaper()) {
             // Add an entry for the default wallpaper (stored in system resources)
             WallpaperTileInfo defaultWallpaperInfo =
@@ -1029,6 +1034,7 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
                 bundled.add(0, defaultWallpaperInfo);
             }
         }
+        */
         return bundled;
     }
 

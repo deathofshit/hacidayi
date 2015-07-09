@@ -44,6 +44,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import com.android.launcher3.wallpaperpicker.R;
+
 public class LiveWallpaperListAdapter extends BaseAdapter implements ListAdapter {
     private static final String LOG_TAG = "LiveWallpaperListAdapter";
 
