@@ -23,4 +23,8 @@ android {
 
     }
 
+    sourceSets {
+        main.java.srcDirs += '../extras'
+        main.java.srcDirs += '../util'
+    }
 }
