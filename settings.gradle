@@ -1,0 +1,3 @@
+include ':app'
+include ':wallpaperPicker'
+project(':wallpaperPicker').projectDir = new File(settingsDir, './WallpaperPicker')
