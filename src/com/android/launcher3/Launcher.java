@@ -2172,7 +2172,7 @@ public class Launcher extends Activity
         removeWidgetToAutoAdvance(launcherInfo.hostView);
         launcherInfo.hostView = null;
         AppWidgetProviderInfo info = mAppWidgetManager.getAppWidgetInfo(launcherInfo.appWidgetId);
-        String packageName = info.providerInfo.packageName;
+        String packageName = info.provider.getPackageName();
         LauncherApplication.getLauncherStats().sendWidgetRemoveEvent(packageName);
     }
 
@@ -2603,7 +2603,7 @@ public class Launcher extends Activity
             completeAddAppWidget(appWidgetId, info.container, info.screenId, boundWidget,
                     appWidgetInfo);
             mWorkspace.removeExtraEmptyScreenDelayed(true, onComplete, delay, false);
-            String packageName = appWidgetInfo.providerInfo.packageName;
+            String packageName = appWidgetInfo.provider.getPackageName();
             LauncherApplication.getLauncherStats().sendWidgetAddEvent(packageName);
         }
     }
@@ -4576,21 +4576,45 @@ public class Launcher extends Activity
         if (mAppWidgetManager == null) return null;
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        final Intent assistIntent = searchManager.getAssistIntent(this, false);
+        final Intent assistIntent = getAssistIntent(searchManager);
         if (assistIntent == null) {
             return null;
         }
         ComponentName searchComponent = assistIntent.getComponent();
 
         // Find the first widget from the same package as the global assist activity
-        List<AppWidgetProviderInfo> widgets = AppWidgetManager.getInstance(this)
-                .getInstalledProviders(AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN);
+        List<AppWidgetProviderInfo> widgets =
+                getWidgetList(AppWidgetManager.getInstance(this), AppWidgetProviderInfo.WIDGET_CATEGORY_HOME_SCREEN);
         for (AppWidgetProviderInfo info : widgets) {
             if (info.provider.getPackageName().equals(searchComponent.getPackageName())) {
                 return info;
             }
         }
         return null;
+    }
+
+    private Intent getAssistIntent(SearchManager sm) {
+        try {
+            Class clazz = SearchManager.class;
+            Method method = clazz.getMethod("getAssistIntent", Context.class, boolean.class);
+            method.setAccessible(true);
+            Object intent = method.invoke(sm, this, false);
+            return (Intent) intent;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private List<AppWidgetProviderInfo> getWidgetList(AppWidgetManager awm, int category) {
+        try {
+            Class clazz = AppWidgetManager.class;
+            Method method = clazz.getMethod("getInstalledProviders", int.class);
+            method.setAccessible(true);
+            Object list = method.invoke(awm, category);
+            return (List<AppWidgetProviderInfo>) list;
+        } catch (Exception e) {
+            return new ArrayList<>();
+        }
     }
 
     public Pair<Integer, AppWidgetProviderInfo> bindSearchAppWidget(AppWidgetHost host) {

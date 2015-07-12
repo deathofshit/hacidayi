@@ -19,12 +19,13 @@ android {
 
     dependencies {
 
+        compile group: 'com.google.guava', name: 'guava', version: '12.0'
         compile project(path: ':wallpaperPicker')
 
     }
 
     sourceSets {
-        main.java.srcDirs += '../extras'
+        main.java.srcDirs += '../extra'
         main.java.srcDirs += '../util'
     }
 }

@@ -24,8 +24,6 @@ import com.google.common.annotations.VisibleForTesting;
 
 import java.util.Locale;
 
-import libcore.icu.ICU;
-
 public class LocaleSetManager {
     private static final String TAG = LocaleSetManager.class.getSimpleName();
 

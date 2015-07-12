@@ -166,7 +166,7 @@ public class AppDrawerScrubber extends LinearLayout {
     }
     private void performSmoothScroll(int itemDiff, int itemIndex) {
         if (mLinearSmoothScroller == null) {
-            mLinearSmoothScroller = new AppDrawerSmoothScroller(mContext);
+            mLinearSmoothScroller = new AppDrawerSmoothScroller(getContext());
         }
         mLinearSmoothScroller.setItemDiff(itemDiff);
         mLinearSmoothScroller.setTargetPosition(itemIndex);

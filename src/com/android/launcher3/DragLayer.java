@@ -959,6 +959,10 @@ public class DragLayer extends FrameLayout implements ViewGroup.OnHierarchyChang
         }
     }
 
+    private boolean isLayoutRtl() {
+        return getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+    }
+
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         boolean ret = super.drawChild(canvas, child, drawingTime);
 
