@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
 
@@ -24,6 +26,14 @@ android {
         }
     }
 
+    productFlavors {
+        catapult {
+            applicationId "com.kaneoriley.cyanogenport.launcher3"
+            versionCode getLongDate().toInteger()
+            versionName '12.1-' + getShortDate()
+        }
+    }
+
     dependencies {
 
         compile group: 'com.google.guava', name: 'guava', version: '18.0'
@@ -44,4 +54,20 @@ android {
         }
 
     }
+}
+
+def getDate(String dateFormat) {
+    def df = new SimpleDateFormat(dateFormat)
+    Calendar c = Calendar.getInstance();
+    TimeZone tz = c.getTimeZone();
+    df.setTimeZone(tz)
+    return df.format(new Date())
+}
+
+def getLongDate() {
+    return getDate("yyMMddHH")
+}
+
+def getShortDate() {
+    return getDate("yyMMdd")
 }
