@@ -3460,7 +3460,8 @@ public class Launcher extends Activity
             return;
         }
 
-        if (info.hidden) {
+        // Shouldn't be possible but just in case
+        if (info.hidden && false) {
             folder.startHiddenFolderManager();
             return;
         }

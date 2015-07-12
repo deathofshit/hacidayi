@@ -256,6 +256,8 @@ public class Folder extends LinearLayout implements DragSource, View.OnClickList
         mFolderLock.measure(measureSpec, measureSpec);
         mFolderLock.setOnClickListener(this);
         mFolderLockHeight = mFolderLock.getMeasuredHeight();
+        // Locking is only available on Cyanogenmod, hide
+        mFolderLock.setVisibility(View.GONE);
     }
 
     private ActionMode.Callback mActionModeCallback = new ActionMode.Callback() {
