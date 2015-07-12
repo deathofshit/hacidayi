@@ -10,6 +10,10 @@ protobuf {
 }
 
 android {
+
+    // Import signing configs
+    apply from: '/Volumes/Development/keys/lennox.gradle'
+
     compileSdkVersion 22
     buildToolsVersion "23.0.0 rc3"
 
@@ -22,7 +26,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.lennox
         }
     }
 
