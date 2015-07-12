@@ -17,6 +17,12 @@ android {
     compileSdkVersion 22
     buildToolsVersion "23.0.0 rc3"
 
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+
     defaultConfig {
         applicationId "com.android.launcher3"
         minSdkVersion 21
