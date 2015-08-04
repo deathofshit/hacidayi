@@ -18,7 +18,7 @@
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/../AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/../res" />
-        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../res;file://$MODULE_DIR$/../extra/res;file://$MODULE_DIR$/src/catapult/res" />
+        <option name="RES_FOLDERS_RELATIVE_PATH" value="file://$MODULE_DIR$/../extra/res;file://$MODULE_DIR$/../res;file://$MODULE_DIR$/src/catapult/res" />
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
@@ -115,7 +115,7 @@
     <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="guava-18.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-22.2.1" level="project" />
     <orderEntry type="library" exported="" name="protobuf-javanano-3.0.0-alpha-2" level="project" />
     <orderEntry type="module" module-name="wallpaperPicker" exported="" />
   </component>

@@ -661,7 +661,7 @@ public class Folder extends LinearLayout implements DragSource, View.OnClickList
                     circX, circY, 0, mScreenWidth);
 
             final View[] alphaViewSet = new View[] { mFolderNameLockContainer,
-                    mContent, mFolderName, mFolderLock };
+                    mContent, mFolderName };
             for (View view : alphaViewSet) {
                 view.setAlpha(0f);
             }

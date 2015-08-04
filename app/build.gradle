@@ -11,8 +11,14 @@ protobuf {
 
 android {
 
-    // Import signing configs
-    apply from: '/Volumes/Development/keys/lennox.gradle'
+    signingConfigs {
+        global {
+            keyAlias extraKeyAlias
+            keyPassword extraKeyPassword
+            storeFile file(extraStoreFile)
+            storePassword extraStorePassword
+        }
+    }
 
     compileSdkVersion 22
     buildToolsVersion "23.0.0 rc3"
@@ -32,7 +38,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            signingConfig signingConfigs.lennox
+            signingConfig signingConfigs.global
         }
     }
 
